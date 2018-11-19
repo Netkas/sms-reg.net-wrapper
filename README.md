@@ -1,10 +1,11 @@
+
 # SMS-REG .NET Library
 
 A simple wrapper for the SMS-REG API, Written for the .NET Library, an example usage of this Library can be found in "SmsREG Test" Project within this solution
 
 
 ## Example Code
-```c#
+```csharp
 static void Main(string[] args)
         {
             // Get a number from SMS-REG
