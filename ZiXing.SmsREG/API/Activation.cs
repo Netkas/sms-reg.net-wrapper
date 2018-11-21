@@ -52,10 +52,11 @@ namespace ZiXing.SmsREG.API
         /// </summary>
         /// <param name="Number"></param>
         /// <returns></returns>
-        private static string GetPhoneNumber(Number Number)
+        public static string GetPhoneNumber(Number Number)
         {
             Uri RequestURL = new Uri($"http://api.sms-reg.com/getOperations.php?apikey={Number.APIKey}");
             var GetResponse = Utilities.GET(RequestURL);
+            Console.WriteLine(GetResponse);
 
             try
             {

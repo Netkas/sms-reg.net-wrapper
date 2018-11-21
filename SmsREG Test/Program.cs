@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace SmsREG_Test
 {
@@ -7,7 +8,21 @@ namespace SmsREG_Test
         static void Main(string[] args)
         {
             // Get a number from SMS-REG
-            var Number = ZiXing.SmsREG.API.Activation.GetNumber("<API KEY>", ZiXing.SmsREG.Service.Telegram, ZiXing.SmsREG.Country.Russia);
+            ZiXing.SmsREG.Objects.Number Number = ZiXing.SmsREG.API.Activation.GetNumber("<API KEY>", ZiXing.SmsREG.Service.Telegram, ZiXing.SmsREG.Country.Russia);
+
+            while(true)
+            {
+                if (Number.Phone == null)
+                {
+                    Console.WriteLine("Number not ready, checking in 5 seconds");
+                    Thread.Sleep(5000);
+                    Number.Phone = ZiXing.SmsREG.API.Activation.GetPhoneNumber(Number);
+                }
+                else
+                {
+                    break;
+                }
+            }
             Console.WriteLine($"ID: {Number.ID}");
             Console.WriteLine($"Number: {Number.Phone}");
 
