@@ -56,7 +56,6 @@ namespace ZiXing.SmsREG.API
         {
             Uri RequestURL = new Uri($"http://api.sms-reg.com/getOperations.php?apikey={Number.APIKey}");
             var GetResponse = Utilities.GET(RequestURL);
-            Console.WriteLine(GetResponse);
 
             try
             {
